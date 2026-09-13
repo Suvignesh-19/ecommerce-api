@@ -25,31 +25,27 @@ const swaggerDocument = {
       User: {
         type: "object",
         properties: {
-          id:       { type: "string" },
-          username: { type: "string" },
-          email:    { type: "string" },
-          contact:  { type: "number" },
-          location: { type: "string" },
-          role:     { type: "string", enum: ["user", "admin"] }
+          id:    { type: "string" },
+          name:  { type: "string" },
+          email: { type: "string" },
+          role:  { type: "string", enum: ["user", "admin"] }
         }
       },
       RegisterRequest: {
         type: "object",
-        required: ["username", "email", "contact", "password", "location"],
+        required: ["name", "email", "password"],
         properties: {
-          username: { type: "string" },
-          email:    { type: "string" },
-          contact:  { type: "number" },
-          password: { type: "string" },
-          location: { type: "string" }
+          name:     { type: "string", example: "John Doe" },
+          email:    { type: "string", example: "john@example.com" },
+          password: { type: "string", example: "password123" }
         }
       },
       LoginRequest: {
         type: "object",
         required: ["email", "password"],
         properties: {
-          email:    { type: "string" },
-          password: { type: "string" }
+          email:    { type: "string", example: "john@example.com" },
+          password: { type: "string", example: "password123" }
         }
       },
       Product: {
