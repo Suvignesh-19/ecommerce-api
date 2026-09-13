@@ -33,8 +33,16 @@ const router = express.Router();
  *     responses:
  *       201:
  *         description: User registered successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/AuthResponse'
  *       400:
  *         description: User already exists or validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.post("/register", register);
 
@@ -42,7 +50,7 @@ router.post("/register", register);
  * @swagger
  * /api/auth/login:
  *   post:
- *     summary: Login a user
+ *     summary: Login and get JWT token
  *     tags: [Auth]
  *     requestBody:
  *       required: true
@@ -60,9 +68,17 @@ router.post("/register", register);
  *                 example: password123
  *     responses:
  *       200:
- *         description: Login successful, returns JWT token
+ *         description: Login successful - copy the token and use Authorize button at top
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/AuthResponse'
  *       401:
  *         description: Invalid credentials
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.post("/login", login);
 
