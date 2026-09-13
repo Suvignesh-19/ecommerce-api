@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+import swaggerUi from "swagger-ui-express";
 
 import connectDB from "./config/db.js";
+import swaggerSpec from "./config/swagger.js";
 
 import authRoutes from "./routes/auth.routes.js";
 import productRoutes from "./routes/product.routes.js";
@@ -15,6 +17,9 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
+
+// Swagger Docs
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Home route
 app.get("/", (req, res) => {
